@@ -1,0 +1,40 @@
+<?
+$MESS["ERROR:1"] = "Пользователь не авторизован";
+$MESS["ERROR:10"] = "Не установлен модуль инфоблоков";
+$MESS["40_ERROR"] = "Error:40";
+$MESS["PHONE_EXIST"] = "This phone is already exist";
+$MESS["CONTACT_FOR_BOOK"] = "Contact for a book - ";
+$MESS["CONTACT_SCS_ADDED"] = "Contact successfully added";
+$MESS["CONTACT_ADD_ERR"] = "Failed to add contact";
+$MESS["GROUP_NAME_LENGTH"] = "The title of the group should be from 2 to 30 characters";
+$MESS["GROUP_ADDED"] = "Group added";
+$MESS["GROUP_ADD_ERR"] = "Failed to add group";
+$MESS["GROUP_ID_ERR"] = "The group ID is not correct";
+$MESS["GROUP_NOT_FOUND"] = "No group found like this";
+$MESS["GROUP_NAME_CHANGED"] = "Group name changed";
+$MESS["GROUP_NAME_CHANGED_ERR"] = "Unable to change the name of the group";
+$MESS["DELETED"] = "Deleted ";
+$MESS["CONTACTS_FROM_GROUP"] = " contacts from group";
+$MESS["ITEM_DELETE_ERR"] = "Item deleting error";
+$MESS["GROUP_DEL_SCS"] = "Group successfully deleted";
+$MESS["CONTACT_ID_ERR"] = "The contact ID is not correct";
+$MESS["CONTACT_SCS_CHANGED"] = "Contact successfully changed";
+$MESS["CONTACT_REFRESH_ERR"] = "Unable to update contact";
+$MESS["FAILED_CONTACT_SEARCH"] = "Contact not found";
+$MESS["NOT_CORRECT_GROUP"] = "The group is not correct";
+$MESS["ITEM_SCS_DELETED"] = "tem successfully deleted";
+$MESS["READING_SCS"] = "The process of reading numbers is over";
+$MESS["GROUP_ID_ERR2"] = "The group ID is not specified or not correct";
+$MESS["NOT_ARRAY"] = "Not an array";
+$MESS["CONTACT_ID_ERR2"] = "An error in the contact ID";
+$MESS["SUCCESS"] = "Successfully completed";
+$MESS["DELETE_IS_COMPL"] = "Removal completed";
+$MESS["SEARCH_IS_COMPL"] = "Search completed";
+$MESS["UNKNOWN_ERROR"] = "Unknown error";
+$MESS["OK"] = "Everything OK!";
+$MESS["RECENTLY_USED_ERR2"] = "Error in the recently used contacts value";
+
+$MESS["SECOND_NAME_LENGTH"] = "Second name must be from 2 to 30 characters";
+$MESS["NAME_LENGTH"] = "Name must be from 2 to 30 characters";
+$MESS["PHONE_LENGTH"] = "Phone must be from 4 to 15 characters";
+?>

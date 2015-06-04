@@ -1,0 +1,31 @@
+<?
+$MESS["CONTACTS"] = "Контакты";
+$MESS["ADD_TO_LIST"] = "Добавить в список получателей";
+$MESS["DELETE_ITEMS"] = "Удалить выбранные элементы";
+$MESS["ADD_CONTACT"] = "Добавить контакт";
+$MESS["ADD_GROUP"] = "Добавить группу";
+$MESS["MOVE_TO"] = "Переместить в";
+$MESS["ACTS"] = "Действия";
+$MESS["FIND"] = "Найти";
+$MESS["FROM_EXCEL"] = "Загрузить контакты из excel";
+$MESS["IN_EXCEL"] = "Выгрузить ТК в excel";
+$MESS["LIST_BUILDING"] = "Построение списка";
+$MESS["GROUP_NAME_EDIT"] = "Редактировать название группы";
+$MESS["GROUP_DELETE"] = "Удалить группу";
+$MESS["GROUP_CONTACTS_DEL"] = "Удалить все контакты из группы";
+$MESS["GROUP_CONTACTS_ADD"] = "Добавить все контакты из группы";
+$MESS["NUMBERS_LIST"] = "Список номеров";
+$MESS["ALL_FIELDS_REQUIRED"] = "Все поля обязательны для заполнения:";
+$MESS["SECOND_NAME"] = "Фамилия";
+$MESS["NAME"] = "Имя";
+$MESS["TELEPHONE"] = "Телефон (пример номера «+79990003344»)";
+$MESS["GROUP"] = "Группа";
+$MESS["PHONE_BOOK"] = "Телефонная книга - ";
+//$MESS["ADD_CONTACT"] = "Добавить новый контакт";
+$MESS["ADD_NEW_GROUP"] = "Добавить новую группу";
+$MESS["THE_FIELD_IS_REQUIRED"] = "Поле обязательно для заполнения";
+$MESS["GROUP_NAME"] = "Название группы:";
+$MESS["PROCESSING"] = "Идет обработка";
+$MESS["WAIT"] = "Подождите немного...";
+$MESS["RECENT_CONTACTS"] = "Часто используемые контакты";
+?>

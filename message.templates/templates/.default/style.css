@@ -1,0 +1,410 @@
+/*--------------------------- ШАБЛОНЫ СООБЩЕНИЙ ------------------- */
+#scroll-wrapper{
+	height: 400px;
+	overflow: auto;
+}
+#main-part {margin-top: 10px;border-bottom: 1px solid #EEE;}
+#templates-header {margin-left: 216px;}
+#phone-list-header {height: 35px;padding: 15px 0 0 0;}
+#search-block {margin: 0 0 20px 0;}
+.search-processing {background: url('images/search-loader.gif') right top no-repeat;}
+#templates-header .moveElements,#templates-header .addElements  { float: left;padding: 3px;margin:7px 0px 0 5px;}
+.templates-title {font-size:16px; font-weight: bold;}
+#templates-header .moveElements .moveElements-header, #templates-header .addElements .addElements-header {padding-right: 15px; background: url(images/label_for_disabled_select.gif) right 50% no-repeat; cursor: pointer;}
+.dashed {background: url(images/label_for_select.gif) right 50% no-repeat !important;}
+#templates-header .moveElements .moveElements-body, #templates-header .addElements .addElements-body {
+	display:none;
+	position:absolute;
+	-moz-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);/* Для Firefox */
+    -webkit-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);; /* Для Safari и Chrome */
+    box-shadow: 2px 3px 9px rgba(0,0,0,0.6); /* Параметры тени */
+  	background-color: #ffffff;
+  	width: 150px;
+  	padding:15px;
+  	margin-top: 2px;
+}
+#templates-header .moveElements .moveElements-body div, #templates-header .addElements .addElements-body div {padding: 5px 0px 0 5px; cursor: pointer;height: 25px;}
+#templates-header .moveElements .moveElements-header-text-disabled, #templates-header .addElements .addElements-header-text-disabled {color:#999999;}
+#templates-header .moveElements .moveElements-header-text-enabled, #templates-header .addElements .addElements-header-text-enabled {color:#000000; background: url(images/dash_dark.gif) 0% bottom repeat-x; cursor: pointer;}
+/*action*/
+#templates-header .actionElements { float: left;padding: 3px;margin: 7px 0 0 3px;}
+#templates-header .actionElements .actionElements-header {padding-right: 15px; background: url(images/label_for_disabled_select.gif) right 50% no-repeat; cursor: pointer;}
+#templates-header .actionElements .actionElements-body { 
+	display:none; 
+	position:absolute;
+	right:0; 
+	-moz-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);/* Для Firefox */
+    -webkit-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);; /* Для Safari и Chrome */
+    box-shadow: 2px 3px 9px rgba(0,0,0,0.6); /* Параметры тени */
+	background-color: #ffffff;
+	width: 200px;
+	padding:15px;
+	margin-top: 2px;
+}
+.import-icon{
+	float: left;
+	height: 32px;
+	width: 32px;
+}
+.import-label{
+	padding: 7px 0 0 40px;
+}
+.import-item{
+	cursor: pointer;
+	height: 35px;
+}
+.actionElements-body>div:hover, .moveElements-body>div:hover, .addElements-body>div:hover, #fromExcel.hover{
+	color: #1C94C4;
+	font-weight: bold;
+}
+#templates-header .actionElements .moveElements-header-text-disabled, #templates-header .actionElements .addElements-header-text-disabled {color:#999999;}
+#templates-header .actionElements .moveElements-header-text-enabled, #templates-header .actionElements .addElements-header-text-enabled {color:#000000; background: url(images/dash_dark.gif) 0% bottom repeat-x; cursor: pointer;}  
+/*----------------*/
+/*excel*/
+#templates-header .excelElements { float: left;padding: 3px;margin: 3px 10px 0 0;}
+#templates-header .excelElements .excelElements-header {padding-right: 15px; background: url(images/label_for_select.gif) right 50% no-repeat; cursor: pointer;}
+#templates-header .excelElements .excelElements-body { display:none; position:absolute; border:1px solid black;  background-color: #ffffff; width: 200px; padding:5px 0px 7px 0px;  margin-top: 2px;}
+#templates-header .excelElements .excelElements-body div{ padding: 5px 0px 0 5px; cursor: pointer; }
+#templates-header .excelElements .moveElements-header-text-disabled {color:#999999;}
+#templates-header .excelElements .moveElements-header-text-enabled {color:#000000; background: url(images/dash_dark.gif) 0% bottom repeat-x; cursor: pointer;}  
+/*----------------*/
+#template-load-div {position: relative; z-index: 2000;}
+
+#template-list {position: relative; }
+#template-list input {position: relative; top:2px;}
+#template-list-load {position: absolute;height: 398px;width: 396px; border:1px solid black; background: gray;z-index: 2500;opacity:.9; display:none;}
+#template-list-load .message {position: absolute; top:40%; left:25%; background: white url('images/44.gif') 10% 50% no-repeat; z-index: 2501; color: black; padding:20px 20px 20px 60px;}
+#template-list a.group-current {
+	border: none;
+	font-weight: bold;
+	cursor: default;
+	display: block;
+    width: 110px;
+}
+#template-list a.frequently {
+    width: 150px !important;
+}
+#template-list div.group-body {display:none;margin-left: 200px;}
+#templates { float: left; margin: 10px 20px 0 0;}
+#templates table {border: 0; border-collapse: collapse; width: 100%;}
+#templates tbody tr {cursor: pointer; border-bottom: 1px solid #eee;}
+#templates tr { height: 18px;}
+#templates td { border: 1px; padding: 5px;}
+#templates td.chkbox {padding: 5px 10px 5px 5px !important;}
+#templates td.name {width: 120px; font-size: 11px; text-align: justify; line-height: 13px;}
+#templates td.detail-text {width: 300px; font-size: 11px; text-align: justify; line-height: 14px;}
+#templates td.template-groups {width: 80px;}
+
+.grouplist {
+    float: left;
+    margin-top: 4px;
+    width: 190px;
+}
+#newgroup {
+    height: 45px;
+}
+#newgroup button#create-group {
+    font-size: 1.2em;
+    margin: 0;
+    padding: 8px 36px 8px 37px;
+    width: 184px;
+}
+.group-header {background: none repeat scroll 0 0 #EFEFEF;
+    cursor: pointer;
+    margin: 0 5px 1px 0;
+    padding: 9px 5px 9px 10px;
+    position: relative;}
+.group-header a {
+/* border-bottom: 1px dotted #000000; */
+	display: block;
+    text-decoration: none;
+    width: 110px; }
+.group-header span#recent-header {margin-left: 25px; text-decoration: underline;}
+.loadExcel {display:none; border:1px solid black; width: 200px; height: 200px;}
+
+/*для формы добавления шаблона*/
+#template-add { display:none; }
+#template-add label { display:block; }
+#template-add input { margin-bottom:12px; width:96%; padding: .4em;display:block; _height: 28px;}
+#template-add select { margin-bottom:12px; width:99%; padding: .4em; _height: 28px;}
+#template-add fieldset { padding:0; border:0; margin-top:25px; }
+#template-add input#moreGroup { width: 99%; margin: 0.5em 0.4em 0.5em 0;}
+#template-add input#removeGroup { width: 97%;}
+.ui-dialog .ui-resizable-se {
+    bottom: 17px !important;
+    height: 14px !important;
+    right: 7px !important;
+    width: 14px !important;
+}
+
+/*для формы редактирования шаблона*/
+#template-edit { display:none; }
+#template-edit label { display:block; }
+#template-edit input { margin-bottom:12px; width:95%; padding: .4em; _height: 28px;}
+#template-edit select { margin-bottom:12px; width:98%; padding: .4em; _height: 28px;}
+#template-edit fieldset { padding:0; border:0; margin-top:25px; }
+#template-edit input#moreGroup { width: 98%; margin: 0.5em 0.4em 0.5em 0;}
+#template-edit input#removeGroup { width: 96%;}
+
+/*#template-edit input#removeGroup , #template-edit input#moreGroup {width:100%;}   */
+/*для формы добавления группы*/
+#group { display:none; }
+#group label { display:block; }
+#group input { margin-bottom:12px; width:95%; padding: 5px; _height: 28px;}
+#group select { margin-bottom:12px; width:95%; padding: 5px; _height: 28px;}
+#group fieldset { padding:0; border:0; margin-top:25px; }
+/*для формы редактирования группы*/
+#group-edit { display:none; }
+#group-edit label { display:block; }
+#group-edit input { margin-bottom:12px; width:95%; padding: .4em; _height: 28px;}
+#group-edit select { margin-bottom:12px; width:95%; padding: .4em; _height: 28px;}
+#group-edit fieldset { padding:0; border:0; margin-top:25px; }
+
+#template-add textarea.new-template-text {width: 413px; height: 68px;}
+#template-edit textarea.edit-template-text {width: 364px; height: 68px;}
+
+
+.ui-selecting { background: #eeecec; }
+.ui-selected { background: #F7DBAA;}
+.small-buttons-hover { background-color: #dadada; width: 10px; height: 10px;}
+
+#ajaxdialog { display:none; }
+
+/*для окошка загрузки */
+#loader-wheel
+{
+	background-image: url("/img/newloader.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: right;
+    height: 32px;
+    width: 32px;
+    margin: 10px;    
+}
+#ajaxloading
+{
+	display:none;
+	min-height: 0 !important;
+}
+#ajaxloading p {
+/*	background-image:url(images/101.gif);*/
+	background-position: center;
+	background-repeat: no-repeat; 
+/*	height: 100px;*/
+	margin: 0 !important;
+}
+
+/*для списка шаблонов*/
+
+#templates table tr:hover td {
+	background-color: #F5F5F5;
+}
+#templates table td {
+	border-bottom: 1px solid #DDD;
+	cursor: pointer;
+}
+#search-block {margin: 0 0 20px 0;}
+#templates-search{
+	width: 652px;
+	margin: 0 3px;
+}
+#search-result{
+	width: 609px;
+	display: none;
+	padding: 5px;
+	background: #fff;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: none;
+    position: absolute;
+	margin-top: 0px;
+	z-index: 10000;
+	margin-left: 45px;
+}
+
+#create-template{
+	padding: 9px 31px;
+	float: left;
+	margin: 0 10px 0 0;
+	font-size: 1.2em;
+	width: 184px;
+}
+
+#useto {
+    float: left;
+    font-size: 1em;
+    margin: 0 5px 0 0;
+    padding: 5px 0;
+    width: 240px;
+}
+
+.edit-group {
+    background-image: url("images/ui-icons_222222_256x240.png");
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 50px;
+    top: 9px;
+    width: 16px;
+}
+
+.delete-group {
+    background-image: url("images/ui-icons_222222_256x240.png");
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 30px;
+    top: 9px;
+    width: 16px;
+}
+
+.add-all-group-templates {
+    background-image: url("images/ui-icons_222222_256x240.png");
+    border-bottom: medium none !important;
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 16px;
+}
+
+.group-select-all {
+    border-right: 1px solid #EEEEEE;
+    float: left;
+    margin: 5px 10px 0 0;
+    padding: 10px 10px 10px 5px;
+}
+
+.groupcontent h3 {
+    font-size: 1.3em;
+    padding-top: 13px;
+}
+
+.sort-col {
+    color: #1C94C4;
+    cursor: pointer;
+    font-size: 1.2em;
+    font-weight: bold;
+}
+
+.sort-col.sorting_asc {
+	background: url('images/sort_asc.png') no-repeat center right;
+}
+
+.sort-col.sorting_desc {
+	background: url('images/sort_desc.png') no-repeat center right;
+}
+
+.sort-col.sorting {
+	background: url('images/sort_both.png') no-repeat center right;
+}
+
+.sort-col.sorting_asc_disabled {
+	background: url('images/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sort-col.sorting_desc_disabled {
+	background: url('images/sort_desc_disabled.png') no-repeat center right;
+}
+
+.not-sort-col {
+	font-size: 1.2em;
+	background: white;
+	color: #1C94C4;
+	font-weight: bold;
+}
+#templates-block table tr:hover td {
+	background-color: #F5F5F5;
+}
+#templates-block table td {
+	border-bottom: 1px solid #DDD;
+	cursor: pointer;
+}
+#templates tbody tr, #templates tbody td.dataTables_empty, #templates-block table td.dataTables_empty
+{
+	border: none;
+}
+
+.notify {
+    color: #FFA500;
+    font-size: 18px;
+}
+
+
+/* дополнительный группы */
+.group-list
+{
+	float: left;
+	font: 9px verdana,arial,sans-serif;
+}
+.group-item
+{
+	float: left;
+	background-color: #DEE9EC;
+	border-color: #DEE9EC;
+	border-width: 0;
+	margin: 0 1px 1px 0;
+	color: #4C5D6B;
+	width: 60px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+.group-item a
+{ 
+	text-decoration: none;
+}
+.group-list .more-groups .group-item
+{
+	float: none;
+}
+.group-list a.get-more-groups
+{
+	border-bottom: 1px dotted #1C94C4;
+    color: #1C94C4;
+    text-decoration: none !important;
+    cursor: pointer
+}
+.template-groups .more-groups
+{
+	background: none repeat scroll 0 0 white;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+    display: none;
+    margin: -10px 0 0 5px;
+    padding: 5px;
+    position: absolute;
+   /* width: 90%;*/
+}
+/* -------------------- */
+
+.ui-icon
+{
+	width: 17px !important;
+	height: 17px !important;
+}
+.ui-widget-overlay {
+   /*  background: url("images/ui-bg_diagonals-thick_20_666666_40x40.png") repeat scroll 50% 50% #666666; */
+    background: #666666 !important;
+    opacity: 0.3 !important;
+}
+
+#dialog-id
+{
+	display: none;
+}
+
+/* .memory-selected {
+    color: #444444;
+    display: none;
+    font-weight: bold;
+    height: 130px;
+    padding: 10px;
+    position: fixed;
+    right: 210px;
+    text-align: center;
+    text-decoration: none;
+    top: 75px;
+    width: 100px;
+} */

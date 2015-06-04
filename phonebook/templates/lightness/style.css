@@ -1,0 +1,459 @@
+/*--------------------------- ТЕЛЕФОННАЯ КНИГА ------------------- */
+#scroll-wrapper{
+	height: 400px;
+	overflow: auto;
+}
+#main-part {margin-top: 10px;border-bottom: 1px solid #EEE;}
+#contacts-header {}
+#phone-list-header {height: 35px;padding: 15px 0 0 0;}
+#search-block {margin: 0 0 20px 0;}
+.search-processing {background: url('images/search-loader.gif') right top no-repeat;}
+#contacts-header .moveElements,#contacts-header .addElements  { float: left;padding: 3px;margin:7px 0px 0 5px;}
+.contacts-title {font-size:16px; font-weight: bold;}
+#contacts-header .moveElements .moveElements-header, #contacts-header .addElements .addElements-header {padding-right: 15px; background: url(images/label_for_disabled_select.gif) right 50% no-repeat; cursor: pointer;}
+.dashed {background: url(images/label_for_select.gif) right 50% no-repeat !important;}
+#contacts-header .moveElements .moveElements-body, #contacts-header .addElements .addElements-body {
+	display:none;
+	position:absolute;
+	-moz-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);/* Для Firefox */
+    -webkit-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);; /* Для Safari и Chrome */
+    box-shadow: 2px 3px 9px rgba(0,0,0,0.6); /* Параметры тени */
+  	background-color: #ffffff;
+  	width: 150px;
+  	padding:15px;
+  	margin-top: 2px;
+}
+#contacts-header .moveElements .moveElements-body div, #contacts-header .addElements .addElements-body div {padding: 5px 0px 0 5px; cursor: pointer;height: 25px;}
+#contacts-header .moveElements .moveElements-header-text-disabled, #contacts-header .addElements .addElements-header-text-disabled {color:#999999;}
+#contacts-header .moveElements .moveElements-header-text-enabled, #contacts-header .addElements .addElements-header-text-enabled {color:#000000; background: url(images/dash_dark.gif) 0% bottom repeat-x; cursor: pointer;}
+/*action*/
+#contacts-header .actionElements { float: left;padding: 3px;margin: 7px 0 0 3px;}
+#contacts-header .actionElements .actionElements-header {padding-right: 15px; background: url(images/label_for_disabled_select.gif) right 50% no-repeat; cursor: pointer;}
+#contacts-header .actionElements .actionElements-body { 
+	display:none; 
+	position:absolute;
+	right:0; 
+	-moz-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);/* Для Firefox */
+    -webkit-box-shadow: 2px 3px 9px rgba(0,0,0,0.6);; /* Для Safari и Chrome */
+    box-shadow: 2px 3px 9px rgba(0,0,0,0.6); /* Параметры тени */
+	background-color: #ffffff;
+	width: 240px;
+	padding:15px;
+	margin-top: 2px;
+}
+.import-icon{
+	float: left;
+	height: 32px;
+	width: 32px;
+}
+.import-label{
+	padding: 7px 0 0 40px;
+}
+.import-item{
+	cursor: pointer;
+	height: 45px;
+}
+.actionElements-body>div:hover, .moveElements-body>div:hover, .addElements-body>div:hover, #fromExcel.hover{
+	color: #1C94C4;
+	font-weight: bold;
+}
+#contacts-header .actionElements .moveElements-header-text-disabled, #contacts-header .actionElements .addElements-header-text-disabled {color:#999999;}
+#contacts-header .actionElements .moveElements-header-text-enabled, #contacts-header .actionElements .addElements-header-text-enabled {color:#000000; background: url(images/dash_dark.gif) 0% bottom repeat-x; cursor: pointer;}  
+/*----------------*/
+/*excel*/
+#contacts-header .excelElements { float: left;padding: 3px;margin: 3px 10px 0 0;}
+#contacts-header .excelElements .excelElements-header {padding-right: 15px; background: url(images/label_for_select.gif) right 50% no-repeat; cursor: pointer;}
+#contacts-header .excelElements .excelElements-body { display:none; position:absolute; border:1px solid black;  background-color: #ffffff; width: 200px; padding:5px 0px 7px 0px;  margin-top: 2px;}
+#contacts-header .excelElements .excelElements-body div{ padding: 5px 0px 0 5px; cursor: pointer; }
+#contacts-header .excelElements .moveElements-header-text-disabled {color:#999999;}
+#contacts-header .excelElements .moveElements-header-text-enabled {color:#000000; background: url(images/dash_dark.gif) 0% bottom repeat-x; cursor: pointer;}  
+/*----------------*/
+#contact-load-div {position: relative; z-index: 2000;}
+
+#contact-list {position: relative; }
+#contact-list input {position: relative; top:2px;}
+#contact-list-load {position: absolute;height: 398px;width: 396px; border:1px solid black; background: gray;z-index: 2500;opacity:.9; display:none;}
+#contact-list-load .message {position: absolute; top:40%; left:25%; background: white url('images/44.gif') 10% 50% no-repeat; z-index: 2501; color: black; padding:20px 20px 20px 60px;}
+#contact-list a.group-current {
+	border: none;
+	font-weight: bold;
+	cursor: default;
+	display: block;
+    width: 110px;
+} 
+#contact-list div.group-body {display:none;margin-left: 200px;} 
+#contacts {float:left; margin: 10px 20px 0 0;}
+#contacts table {border: 0; border-collapse: collapse; width: 100%;}
+#contacts tbody tr {cursor: pointer; border-bottom: 1px solid #eee;}
+#contacts tr { height: 18px;}
+#contacts td { border: 1px; padding: 5px;}
+#contacts td.chkbox {padding: 5px 10px 5px 5px !important;}
+/* #contacts td.contact-groups .more-groups {background-image: url("images/groups.png");} */
+#contacts td.lastname {width: 100px; font-size: 11px;}
+#contacts td.name {width: 90px; font-size: 11px;}
+#contacts td.phone {width: 90px; font-size: 11px;}
+#contacts td.contact-groups {width: 230px;}
+
+.group-header {background: none repeat scroll 0 0 #EFEFEF;
+    cursor: pointer;
+    margin: 0 5px 1px 0;
+    padding: 9px 5px 9px 10px;
+    position: relative;}
+.group-header a {
+/* border-bottom: 1px dotted #000000; */
+	display: block;
+    text-decoration: none;
+    width: 110px; }
+.group-header span#recent-header {margin-left: 25px; text-decoration: underline;}
+.loadExcel {display:none; border:1px solid black; width: 200px; height: 200px;}
+
+/*для формы добавления контакта*/
+#dialog label { display:block; }
+#dialog input { margin-bottom:12px; width:96%; padding: .4em;display:block; _height: 28px;}
+#dialog select { margin-bottom:12px; width:99%; padding: .4em; _height: 28px;}
+#dialog fieldset { padding:0; border:0; margin-top:25px; }
+#dialog input#moreGroup { width: 99%; margin: 0.5em 0.4em 0.5em 0;}
+#dialog input#removeGroup { width: 97%;}
+/*для формы редактирования контакта*/
+#contact-edit label { display:block; }
+#contact-edit input { margin-bottom:12px; width:95%; padding: .4em; _height: 28px;}
+#contact-edit select { margin-bottom:12px; width:98%; padding: .4em; _height: 28px;}
+#contact-edit fieldset { padding:0; border:0; margin-top:25px; }
+#contact-edit input#moreGroup { width: 98%; margin: 0.5em 0.4em 0.5em 0;}
+#contact-edit input#removeGroup { width: 96%;}
+
+/*#contact-edit input#removeGroup , #contact-edit input#moreGroup {width:100%;}   */
+/*для формы добавления группы*/
+#group label { display:block; }
+#group input { margin-bottom:12px; width:95%; padding: 5px; _height: 28px;}
+#group select { margin-bottom:12px; width:95%; padding: 5px; _height: 28px;}
+#group fieldset { padding:0; border:0; margin-top:25px; }
+/*для формы редактирования группы*/
+#group-edit label { display:block; }
+#group-edit input { margin-bottom:12px; width:95%; padding: .4em; _height: 28px;}
+#group-edit select { margin-bottom:12px; width:95%; padding: .4em; _height: 28px;}
+#group-edit fieldset { padding:0; border:0; margin-top:25px; }
+
+/*для окошка загрузки */
+#loader-wheel
+{
+	background-image: url("/img/newloader.gif");
+    background-position: center center;
+    background-repeat: no-repeat;
+    float: right;
+    height: 32px;
+    width: 32px;
+    margin: 10px;    
+}
+#ajaxloading
+{
+	min-height: 0 !important;
+}
+#ajaxloading p {
+/*	background-image:url(images/101.gif);*/
+	background-position: center;
+	background-repeat: no-repeat; 
+/*	height: 100px;*/
+	margin: 0 !important;
+}
+/*для списка контактов*/
+
+
+/*для списка телефонов*/
+#phones-list {float:left;width:310px;}
+#phones-list textarea {width:310px;height:350px}
+#phones-list textarea#numbers-list {height: 398px;}
+
+/* дополнительный группы */
+table.contacts-table td.contact-groups .group-list
+{
+	float: left;
+	font: 9px verdana,arial,sans-serif;
+}
+table.contacts-table td.contact-groups .group-item
+{
+	float: left;
+	background-color: #DEE9EC;
+	border-color: #DEE9EC;
+	border-width: 0;
+	margin: 0 1px 1px 0;
+	color: #4C5D6B;
+	width: 60px;
+	overflow: hidden;
+	white-space: nowrap;
+	text-overflow: ellipsis;
+}
+table.contacts-table td.contact-groups .group-item a
+{ 
+	text-decoration: none;
+}
+table.contacts-table td.contact-groups .group-list .more-groups .group-item
+{
+	float: none;
+}
+table.contacts-table td.contact-groups .group-list a.get-more-groups
+{
+	border-bottom: 1px dotted #1C94C4;
+    color: #1C94C4;
+    text-decoration: none !important;
+    cursor: pointer
+}
+table.contacts-table td.contact-groups .more-groups
+{
+	background: none repeat scroll 0 0 white;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+    display: none;
+    margin: -10px 0 0 5px;
+    padding: 5px;
+    position: absolute;
+   /* width: 90%;*/
+}
+/* -------------------- */
+
+.recent-group { position: absolute; display:block; left:3px; width:16px; height: 16px; background-image:url(images/ui-icons_222222_256x240.png);}
+.toggle-group { position: absolute; display:block; left:3px; width:16px; height: 16px; background-image:url(images/ui-icons_222222_256x240.png);}
+.add-all-group-numbers {
+    background-image: url("images/ui-icons_222222_256x240.png");
+    border-bottom: medium none !important;
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 10px;
+    top: 9px;
+    width: 16px;
+}
+.edit-group {
+    background-image: url("images/ui-icons_222222_256x240.png");
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 50px;
+    top: 9px;
+    width: 16px;
+}
+
+.delete-group {
+    background-image: url("images/ui-icons_222222_256x240.png");
+    display: block;
+    height: 16px;
+    position: absolute;
+    right: 30px;
+    top: 9px;
+    width: 16px;
+}
+.edit-contact { width:15px; height: 15px;}
+.delete-contact { width:15px; height: 15px; background-image:url(images/ui-icons_222222_256x240.png);}
+.add-to-phone-list { width:15px; height: 15px; background-image:url(images/ui-icons_222222_256x240.png);}
+/*.ui-icon:hover{
+	background-image:url(images/ui-icons_ef8c08_256x240.png);
+} */
+/*для кнопачек*/
+.ui-icon
+{
+	width: 17px !important;
+	height: 17px !important;
+}
+.ui-button#load-contacts { margin-right: 5px; padding: 0.2em !important; width: 220px; cursor:pointer; }
+.ui-dialog .ui-state-highlight, .ui-dialog .ui-state-error { padding: .3em;  }
+
+.ui-selecting { background: #eeecec; }
+.ui-selected { background: #F7DBAA;}
+.small-buttons-hover { background-color: #dadada; width: 10px; height: 10px;}
+
+
+#phones_from_book{
+	display: none;
+}
+#create-user{
+	padding: 9px 31px;
+	float: left;
+	margin: 0 10px 0 0;
+	font-size: 1.2em;
+	width: 184px;
+}
+#sendto{
+	padding: 5px 0 6px 0;
+	float: left;
+	margin: 0 5px 0 0;
+	font-size: 1em;
+	width: 240px;
+}
+#contacts-search{
+	width: 652px;
+	margin: 0 3px;
+}
+.grouplist{
+    float: left;
+    width: 190px;
+    margin-top: 4px;
+}
+.groupcontent{
+    
+}
+.groupcontent h3{
+	padding-top: 13px;
+font-size: 1.3em;
+}
+.entry-content>p{
+	display: none !important;
+}
+#newgroup{
+	height: 45px;
+}
+#newgroup button#create-group{
+	padding: 8px 36px 8px 37px;
+	margin: 0;
+	font-size: 1.2em;
+	width:184px;
+}
+#contacts-header{
+	margin-left: 216px;
+}
+#search-result{
+	width: 609px;
+	display: none;
+	padding: 5px;
+	background: #fff;
+    border-bottom: 1px solid #ccc;
+    border-left: 1px solid #ccc;
+    border-right: 1px solid #ccc;
+    border-top: none;
+    position: absolute;
+	margin-top: 0px;
+	z-index: 10000;
+	margin-left: 45px;
+}
+#ajaxuploadfilediv{}
+
+#phonebook table th.not-sort-col {
+	font-size: 1.2em;
+	background: white;
+	color: #1C94C4;
+	font-weight: bold;
+}
+#phonebook table tr:hover td {
+	background-color: #F5F5F5;
+}
+#phonebook table td {
+	border-bottom: 1px solid #DDD;
+	cursor: pointer;
+}
+table#edit-groups-table td
+{
+	padding: 0px;
+	border-bottom: none;
+}
+table#add-groups-table td
+{
+	padding: 0px;
+	border-bottom: none;
+}
+.search-result-phone{
+	text-align: right;
+	width: 100px;
+}  
+
+.sort-col
+{
+	font-size: 1.2em;
+	cursor: pointer;
+	color: #1C94C4;
+	font-weight: bold;
+}
+
+.sort-col.sorting_asc {
+	background: url('images/sort_asc.png') no-repeat center right;
+}
+
+.sort-col.sorting_desc {
+	background: url('images/sort_desc.png') no-repeat center right;
+}
+
+.sort-col.sorting {
+	background: url('images/sort_both.png') no-repeat center right;
+}
+
+.sort-col.sorting_asc_disabled {
+	background: url('images/sort_asc_disabled.png') no-repeat center right;
+}
+
+.sort-col.sorting_desc_disabled {
+	background: url('images/sort_desc_disabled.png') no-repeat center right;
+}
+
+.notify
+{
+	color: #FFA500;
+	font-size: 18px;
+}
+#contacts tbody tr, #contacts tbody td.dataTables_empty, #phonebook table td.dataTables_empty
+{
+	border: none;
+}
+
+.congrat-notify
+{
+	background: none repeat scroll 0 0 white;
+    box-shadow: 2px 2px 8px 0 rgba(0, 0, 0, 0.5);
+    display: none;
+    margin: -10px 0 0 5px;
+    padding: 5px;
+    position: absolute;
+}
+.congrat-notify a, .congrat-notify a:link, .congrat-notify a:visited
+{
+	border-bottom: 1px dashed #FFA500;
+    color: #FFA500;
+    text-decoration: none;
+}
+.closed-window{
+	display: none;
+}
+.import-master{
+	display: none;
+}
+.pre{}
+.in{
+	display: none;
+}
+.post{
+	display: none;
+}
+.import-loader{
+	margin: 0 0 10px 0;
+}
+.tblwrap{
+	height: 200px;
+	width: 570px;
+	overflow: auto;
+}
+.example-list{
+	width: 550px;
+	background: #FFF;
+}
+.example-list th{
+	color: #1C94C4;
+	font-weight: bold;
+	font-size: 1.1em;
+	background: #FFF;
+}
+.example-list td{
+	border-bottom: 1px solid #DDD;
+	padding: 5px;
+}
+.import-submit{
+	margin: 10px 0 0 0;
+}
+
+.group-name{
+	width: 130px;
+}
+#group-1{
+	display: block;
+}
+
+.ui-widget-overlay {
+   /*  background: url("images/ui-bg_diagonals-thick_20_666666_40x40.png") repeat scroll 50% 50% #666666; */
+    background: #666666 !important;
+    opacity: 0.3 !important;
+}

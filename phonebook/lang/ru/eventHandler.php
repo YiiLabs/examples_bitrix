@@ -1,0 +1,40 @@
+<?
+$MESS["ERROR:1"] = "Пользователь не авторизован";
+$MESS["ERROR:10"] = "Не установлен модуль инфоблоков";
+$MESS["40_ERROR"] = "Ошибка:40";
+$MESS["PHONE_EXIST"] = "Такой телефон уже есть";
+$MESS["CONTACT_FOR_BOOK"] = "Контакт для книги - ";
+$MESS["CONTACT_SCS_ADDED"] = "Контакт успешно добавлен";
+$MESS["CONTACT_ADD_ERR"] = "Ошибка добавления контакта";
+$MESS["GROUP_NAME_LENGTH"] = "Длина названия группы должна быть от 2 до 30 символов";
+$MESS["GROUP_ADDED"] = "Группа добавлена";
+$MESS["GROUP_ADD_ERR"] = "Ошибка добавления группы";
+$MESS["GROUP_ID_ERR"] = "Не корректный идентификатор группы";
+$MESS["GROUP_NOT_FOUND"] = "Такой группы не найдено";
+$MESS["GROUP_NAME_CHANGED"] = "Название группы изменено";
+$MESS["GROUP_NAME_CHANGED_ERR"] = "Не удалось поменять название у группы";
+$MESS["DELETED"] = "Удалено ";
+$MESS["CONTACTS_FROM_GROUP"] = " контактов из группы";
+$MESS["ITEM_DELETE_ERR"] = "Ошибка удаления элемента";
+$MESS["GROUP_DEL_SCS"] = "Группа успешно удалена";
+$MESS["CONTACT_ID_ERR"] = "Не корректный идентификатор контакта";
+$MESS["CONTACT_SCS_CHANGED"] = "Контакт успешно изменен";
+$MESS["CONTACT_REFRESH_ERR"] = "Невозможно обновить контакт";
+$MESS["FAILED_CONTACT_SEARCH"] = "Контакт не найден";
+$MESS["NOT_CORRECT_GROUP"] = "Не корректная группа";
+$MESS["ITEM_SCS_DELETED"] = "Элемент успешно удален";
+$MESS["READING_SCS"] = "Процесс считывания номеров окончен";
+$MESS["GROUP_ID_ERR2"] = "Не указан или не корректен идентификатор группы";
+$MESS["NOT_ARRAY"] = "Не массив";
+$MESS["CONTACT_ID_ERR2"] = "Ошибка в идентификаторе контакта";
+$MESS["SUCCESS"] = "Успешно выполнено";
+$MESS["DELETE_IS_COMPL"] = "Удаление завершено";
+$MESS["SEARCH_IS_COMPL"] = "Поиск завершен";
+$MESS["UNKNOWN_ERROR"] = "Неопознаная ошибка";
+$MESS["OK"] = "Все ок!";
+$MESS["RECENTLY_USED_ERR2"] = "Ошибка в значении часто используемых номеров";
+
+$MESS["SECOND_NAME_LENGTH"] = "Фамилия должна быть от 2 до 30 символов";
+$MESS["NAME_LENGTH"] = "Имя должно быть от 2 до 30 символов";
+$MESS["PHONE_LENGTH"] = "Телефон должен быть от 4 до 15 символов";
+?>
