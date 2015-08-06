@@ -10,9 +10,10 @@
 class Order {
     private static $defaultEmail = 'avolkov05@gmail.com';
     private static $defaultPersonTypeId = '1';
-    private static $defaultDelivery = '1';
+    private static $defaultDelivery = '2';
     private static $defaultPaySystem = '1';
     private static $defaultUserId = '2';
+	private static $def = '2';
 
     public static function createOrder1Click($name, $phone) {
         $arBasketItems = array();
