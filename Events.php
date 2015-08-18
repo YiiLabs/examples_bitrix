@@ -5,7 +5,7 @@ class Events {
 
     /**
      * подставляем в почтовый шаблон пароль
-     * @param $arParams
+     * @param $arParams вапвап
      */
     function onSendUserInfoHandler(&$arParams) {
         $arParams['FIELDS']['PASSWORD'] = $arParams['USER_FIELDS']['PASSWORD'];
